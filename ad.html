@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Mubarak! ✨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f0c29; /* Deep indigo */
+            --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            --text-color: #f0f0f0;
+            --primary-glow: #00f2ff; /* Neon Cyan */
+            --secondary-glow: #ff00e0; /* Neon Pink */
+            --accent-color: #ffd700; /* Gold for Eid accents */
+            
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-blur: 10px;
+
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            padding: clamp(20px, 5vw, 40px); /* Responsive padding */
+            border-radius: 25px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 
+                        0 0 20px var(--primary-glow), 
+                        0 0 40px var(--secondary-glow),
+                        inset 0 0 10px rgba(255,255,255,0.05);
+            width: 100%;
+            max-width: 550px;
+            animation: fadeInContainer 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInContainer {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .responsive-gif {
+            display: block;
+            max-width: 80%;
+            height: auto;
+            margin: 0 auto 25px auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUpFadeIn 0.8s ease-out 0.2s forwards;
+        }
+
+        .festive-greeting {
+            font-size: clamp(1.6em, 4vw, 2.2em); /* Responsive font size */
+            margin-bottom: 30px;
+            font-weight: 700;
+            line-height: 1.3;
+            background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow), var(--accent-color));
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -moz-text-fill-color: transparent;
+            text-fill-color: transparent;
+            text-shadow: 0 0 8px rgba(0, 242, 255, 0.5), 
+                         0 0 15px rgba(255, 0, 224, 0.4),
+                         0 0 20px rgba(255, 215, 0, 0.3);
+            opacity: 0;
+            animation: fadeInText 1s ease-out 0.4s forwards, subtleShimmer 5s infinite alternate;
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes subtleShimmer {
+            0% { filter: brightness(100%); }
+            50% { filter: brightness(115%); }
+            100% { filter: brightness(100%); }
+        }
+        
+        .name-input {
+            width: calc(100% - 40px); /* Adjust for padding */
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 50px; /* More rounded */
+            border: 2px solid var(--glass-border);
+            background-color: rgba(0, 0, 0, 0.2);
+            color: var(--text-color);
+            font-size: 1em;
+            font-family: var(--font-family);
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUpFadeIn 0.8s ease-out 0.6s forwards;
+        }
+
+        .name-input::placeholder {
+            color: rgba(240, 240, 240, 0.6);
+        }
+
+        .name-input:focus {
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 15px var(--primary-glow), 0 0 5px var(--primary-glow) inset;
+        }
+        
+        .button-container {
+            display: flex;
+            flex-direction: column; /* Stack buttons by default for better mobile */
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        @media (min-width: 480px) { /* Side-by-side for larger screens */
+            .button-container {
+                flex-direction: row;
+            }
+        }
+
+        .styled-button {
+            padding: 14px 28px;
+            font-size: 1.05em;
+            font-weight: 600;
+            font-family: var(--font-family);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            outline: none;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-grow: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative; /* For pseudo-elements if needed */
+            overflow: hidden; /* For ripple or shine effects */
+        }
+
+        #generateButton {
+            color: var(--bg-color);
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+            animation: slideUpFadeIn 0.8s ease-out 0.8s forwards, pulseGold 2s infinite alternate;
+        }
+        
+        @keyframes pulseGold {
+            from { box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color), 0 0 30px rgba(255,215,0,0.3); transform: scale(1) translateY(0); }
+            to   { box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-color), 0 0 45px rgba(255,215,0,0.5); transform: scale(1.03) translateY(0); }
+        }
+
+        #generateButton:hover {
+            background: #ffe033; /* Lighter gold */
+            box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-color), 0 0 45px rgba(255,215,0,0.6);
+            transform: scale(1.05) translateY(-2px); /* Pop effect */
+            animation-play-state: paused;
+        }
+        #generateButton:active {
+            transform: scale(0.98) translateY(0);
+        }
+
+        #shareButton {
+            color: var(--text-color);
+            background: linear-gradient(45deg, #25D366, #128C7E); /* WhatsApp Green */
+            border-color: #128C7E;
+            box-shadow: 0 0 10px #25D366, 0 0 20px #25D366;
+            animation: slideUpFadeIn 0.8s ease-out 0.9s forwards; /* Delayed if shown initially */
+        }
+        
+        #shareButton:hover {
+            background: linear-gradient(45deg, #29e06d, #15a191);
+            box-shadow: 0 0 15px #25D366, 0 0 30px #25D366, 0 0 45px rgba(37,211,102,0.4);
+            transform: scale(1.05) translateY(-2px);
+        }
+        #shareButton:active {
+            transform: scale(0.98) translateY(0);
+        }
+
+        .custom-wish-display {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.25);
+            border-radius: 15px;
+            border: 2px dashed var(--accent-color);
+            color: var(--accent-color);
+            font-size: 1.1em;
+            line-height: 1.7;
+            min-height: 70px; 
+            word-wrap: break-word; 
+            opacity: 0; 
+            transform: translateY(15px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out, color 0.3s;
+            box-shadow: 0 0 15px rgba(255,215,0,0.2);
+        }
+
+        .custom-wish-display.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .audio-controls {
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUpFadeIn 0.8s ease-out 1.0s forwards;
+        }
+
+        #muteButton {
+            padding: 10px 20px;
+            font-size: 0.95em;
+            font-family: var(--font-family);
+            color: var(--text-color);
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+        }
+
+        #muteButton:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 10px var(--accent-color);
+            transform: scale(1.05);
+        }
+        #muteButton:active {
+             transform: scale(0.95);
+        }
+        
+        /* General Load Animation for multiple elements */
+        @keyframes slideUpFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .whatsapp-icon { /* Simple text icon */
+            margin-right: 8px;
+            font-size: 1.1em; /* Slightly larger if emoji */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- बदला हुआ इमेज लिंक -->
+        <img src="https://i.ibb.co/LhSk9Kq9/eid.gif" alt="ईद मुबारक एनीमेशन" class="responsive-gif">
+<script type="text/javascript">
+	atOptions = {
+		'key' : '7e39dd7ca7bd5dd7ee32586a5ef7f02a',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/7e39dd7ca7bd5dd7ee32586a5ef7f02a/invoke.js"></script>
+        <!-- बदला हुआ मुख्य संदेश (हिंदी में) -->
+        <p class="festive-greeting">✨ ईद मुबारक! यह ईद आप सभी के जीवन में ढेर सारी खुशियाँ, शांति और समृद्धि लाए! 🌙✨</p>
+
+        <!-- बदला हुआ प्लेसहोल्डर टेक्स्ट -->
+        <input type="text" id="nameInput" class="name-input" placeholder="आपका नाम">
+        <script type="text/javascript">
+	atOptions = {
+		'key' : '7e39dd7ca7bd5dd7ee32586a5ef7f02a',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/7e39dd7ca7bd5dd7ee32586a5ef7f02a/invoke.js"></script>
+        <div class="button-container">
+            <!-- बदले हुए बटन टेक्स्ट -->
+            <button id="generateButton" class="styled-button">विश बनाएं</button>
+            <button id="shareButton" class="styled-button" style="display: none;">
+                <span class="whatsapp-icon" role="img" aria-label="WhatsApp">💬</span>शेयर करें
+            </button>
+        </div>
+
+        <div id="customWishOutput" class="custom-wish-display">
+            <!-- Custom wish will appear here -->
+        </div>
+        
+        <div class="audio-controls">
+            <audio id="backgroundMusic" src="song.mp3" loop></audio>
+            <!-- बदला हुआ बटन टेक्स्ट -->
+            <button id="muteButton">🔇 म्यूट</button>
+        </div>
+    </div>
+
+    <script>
+        const nameInput = document.getElementById('nameInput');
+        const generateButton = document.getElementById('generateButton');
+        const customWishOutput = document.getElementById('customWishOutput');
+        const shareButton = document.getElementById('shareButton');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const muteButton = document.getElementById('muteButton');
+
+        let generatedMessage = ""; 
+
+        // --- Audio Handling ---
+        backgroundMusic.volume = 0.25; // Slightly lower default volume
+        
+        function updateMuteButtonText() {
+            // बदला हुआ म्यूट/अनम्यूट टेक्स्ट
+            muteButton.textContent = backgroundMusic.muted ? '🔈 अनम्यूट' : '🔇 म्यूट';
+        }
+        updateMuteButtonText(); // Initial text
+
+        let playAttempted = false;
+        function attemptAudioPlay() {
+            if (backgroundMusic.paused && !playAttempted) {
+                playAttempted = true; // Attempt only once automatically
+                backgroundMusic.play()
+                    .then(() => {
+                        console.log("Audio playback started.");
+                        backgroundMusic.muted = false;
+                        updateMuteButtonText();
+                    })
+                    .catch(error => {
+                        console.warn("Audio autoplay prevented:", error);
+                        backgroundMusic.muted = true; // Mute if autoplay failed
+                        updateMuteButtonText();
+                        
+                        if (!customWishOutput.classList.contains('visible') || customWishOutput.textContent.trim() === "") {
+                            // बदला हुआ ऑडियो म्यूट मैसेज (हिंदी में)
+                            customWishOutput.innerHTML = "🎵 म्यूजिक बंद है। आवाज के लिए 'अनम्यूट' पर क्लिक करें। <small>(ब्राउज़र अक्सर अपने आप ऑडियो चलाने से रोकते हैं)</small>";
+                            customWishOutput.classList.add('visible');
+                            customWishOutput.style.color = "var(--primary-glow)"; // Use a theme color
+                        }
+                    });
+            }
+        }
+        
+        window.addEventListener('load', () => {
+            setTimeout(attemptAudioPlay, 300);
+        });
+
+        let interacted = false;
+        document.body.addEventListener('click', () => {
+            if (!interacted && backgroundMusic.paused) {
+                interacted = true;
+                attemptAudioPlay();
+            }
+        }, { once: true });
+
+        muteButton.addEventListener('click', () => {
+            if (backgroundMusic.muted) {
+                backgroundMusic.muted = false;
+                if (backgroundMusic.paused) { 
+                    backgroundMusic.play().catch(e => console.warn("Play after unmute failed:", e));
+                }
+            } else {
+                backgroundMusic.muted = true;
+            }
+            updateMuteButtonText();
+        });
+        
+        // --- Wish Generation ---
+        generateButton.addEventListener('click', () => {
+            const name = nameInput.value.trim();
+            customWishOutput.classList.remove('visible'); 
+            
+            setTimeout(() => { 
+                if (name === "") {
+                    generatedMessage = ""; 
+                    // नाम न डालने पर दिखने वाला मैसेज (हिंदी में)
+                    customWishOutput.innerHTML = "कृपया पहले अपना नाम लिखें! 😊";
+                    customWishOutput.style.color = "var(--secondary-glow)"; /* Neon Pink for alert */
+                    shareButton.style.display = 'none';
+                } else {
+                    const sanitizedName = name.replace(/</g, "<").replace(/>/g, ">");
+                    // *** मुख्य बदलाव: WhatsApp पर शेयर होने वाला मैसेज (हिंदी में) ***
+                    generatedMessage = `${sanitizedName} की तरफ से ईद मुबारक! 🎉🌙 आपको और आपके परिवार को इस ईद पर ढेर सारी खुशियाँ और बरकतें मिलें! 🕌✨`;
+                    customWishOutput.innerHTML = generatedMessage;
+                    customWishOutput.style.color = 'var(--accent-color)'; // Gold for wish
+                    shareButton.style.display = 'inline-block'; 
+                    shareButton.style.animation = 'slideUpFadeIn 0.5s ease-out forwards';
+                }
+                customWishOutput.classList.add('visible');
+            }, 100); // Small delay for animation
+        });
+
+        // --- Share on WhatsApp ---
+        shareButton.addEventListener('click', () => {
+            if (generatedMessage) {
+                const siteLink = window.location.href;
+                // शेयरिंग टेक्स्ट को हिंदी में बदला गया
+                const whatsappMessage = encodeURIComponent(`${generatedMessage}\n\nयह खूबसूरत शुभकामना देखें: ${siteLink}`);
+                const whatsappUrl = `https://api.whatsapp.com/send?text=${whatsappMessage}`;
+                window.open(whatsappUrl, '_blank');
+            }
+        });
+
+    </script>
+</body>
+</html>
+<script type="text/javascript">
+	atOptions = {
+		'key' : '7e39dd7ca7bd5dd7ee32586a5ef7f02a',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/7e39dd7ca7bd5dd7ee32586a5ef7f02a/invoke.js"></script>
